@@ -11,11 +11,13 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 project(${PROJECT_NAME} VERSION ${VERSION} LANGUAGES CXX)
 
-find_package(Qt6 6.2 COMPONENTS Quick Gui REQUIRED)
+find_package(Qt6 6.2 COMPONENTS Core Quick Gui REQUIRED)
 
-qt_add_executable(${PROJECT_NAME}
+add_executable(${PROJECT_NAME}
     src/main.cpp
     src/qml/resources.qrc
 )
 
-target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::Gui Qt6::Quick)
+target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::Core Qt6::Gui Qt6::Quick)
+
+install(TARGETS ${PROJECT_NAME} DESTINATION ${CMAKE_INSTALL_PREFIX})
